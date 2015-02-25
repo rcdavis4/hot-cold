@@ -1,4 +1,4 @@
-
+var numOfGuesses = 0;
 
 
 
@@ -17,27 +17,24 @@ $(document).ready(function(){
     $(".overlay").fadeOut(1000);
   });
 
+  function getUserGuess() {
+  $('#guessButton').click(function() {
+    var userInput = $('#userGuess').val();
+    userInput = Number(userInput);
+    console.log('user input: ' + userInput);
+    numOfGuesses++;
+
+    return userInput;
+  })
+}
+
+
 
   var userGuess = getUserGuess();
   console.log('user guess: ' + userGuess);
-  console.log('guesses: ' + numOfGuesses);
+//  console.log('guesses: ' + numOfGuesses);
 
 }); // end document.ready
 
 
-var numOfGuesses = 0;
-
-function newGame() {
-  var count = 0;
-}
-
-function getUserGuess() {
-  $('#guessButton').click(function() {
-    var userGuess = $('#userGuess').val();
-    userGuess = Number(userGuess);
-    numOfGuesses++;
-
-  return userGuess;
-  })
-}
 
