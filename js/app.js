@@ -1,6 +1,5 @@
-var numOfGuesses = 0;
 
-
+var numOfGuesses;
 
 
 
@@ -17,24 +16,17 @@ $(document).ready(function(){
     $(".overlay").fadeOut(1000);
   });
 
-  function getUserGuess() {
-  $('#guessButton').click(function() {
-    var userInput = $('#userGuess').val();
-    userInput = Number(userInput);
-    console.log('user input: ' + userInput);
-    numOfGuesses++;
+  /*--- Start a new game ---*/
+  $(".new").click(function() {
+    numOfGuesses = 0;
+    secretNumber = math random (1-100) + 1
+    input val = undefined;
+    choiceList = undefined;
+  });
 
-    return userInput;
+  $("#guessButton").click(function(){
+    
   })
-}
 
-
-
-  var userGuess = getUserGuess();
-  console.log('user guess: ' + userGuess);
-//  console.log('guesses: ' + numOfGuesses);
 
 }); // end document.ready
-
-
-
