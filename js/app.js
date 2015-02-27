@@ -1,7 +1,26 @@
 
 var numOfGuesses;
 
+/*--- Create random number 1 -100 ---*/
+var secretNumber = Math.floor(Math.random() * 100) + 1;
+console.log('secret number: ' + secretNumber);
 
+function newGame() {
+  // set number of guesses to 0
+    numOfGuesses = 0;
+    console.log('guesses: ' + numOfGuesses);
+
+    // create a new secret number
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    console.log('secret number: ' + secretNumber);
+
+    // reset users guess value
+    $("#userGuess").val("");
+    console.log($("#userGuess").val());
+
+    // reset choice list to no choices
+    $("#guessList").empty();
+}
 
 
 $(document).ready(function(){
@@ -18,14 +37,16 @@ $(document).ready(function(){
 
   /*--- Start a new game ---*/
   $(".new").click(function() {
-    numOfGuesses = 0;
-    secretNumber = math random (1-100) + 1
-    input val = undefined;
-    choiceList = undefined;
+    newGame();
   });
 
+  /*--- Get value of input field --*/
   $("#guessButton").click(function(){
-    
+    var guess = $("#userGuess").val();
+    console.log("your guess: " + guess);
+
+    $("#guessList").append("<li>" + guess + "</li>");
+    console.log("your list: " + $("#guessList").text());
   })
 
 
