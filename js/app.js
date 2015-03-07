@@ -4,14 +4,19 @@ $(document).ready(function() {
 
 
 
-  /*--- Create random number 1 -100 ---*/
+  /*--- prevents reloading when submiting input ---*/
+  $("form").submit(function(event) {
+    event.preventDefault();
+  });
+
+  /*--- create random number 1 -100 ---*/
   function secretNumber() {
     var randomNum = Math.floor(Math.random() * 100) + 1; //abs value
 
     return randomNum;
   }
 
-  /*--- Reset for new game ---*/
+  /*--- reset for new game ---*/
   function userGuess() {
 
     /*--- Get value of input field and validate ---*/
@@ -19,67 +24,71 @@ $(document).ready(function() {
 
       var userNum = $("#userGuess").val();
 
-      if (userNum >= 1 && userNum <= 100) {
-        var guess = userNum;
-      } else {
+      if (userNum >= 1 && userNum <= 100 && !isNaN(userNum)) {
+        /*--- append each guess to list section --*/
+        $("#guessList").append("<li>" + userNum + "</li>");
+        /*--- add 1 to number of guesses --*/
+        $("#count").text(++numOfGuesses);
+        /*--- void out input field for next guess ---*/
+        $("#userGuess").val("");
+      }
+      else {
+        /*--- error message ---*/
         $("#feedback").text("Pick a number 1 through 100");
+        /*--- void out input field for next guess ---*/
+        $("#userGuess").val("");
       }
 
-      return guess;
+      return userNum;
     });
   }
 
-  /*--- Appends input and compares to secret number ---*/
-  function gamePlay(secretNum, userGuess) {
+  /*--- game play ---*/
+  function compareNumbers(userGuess, secretNum) {
 
-    if (userGuess === secretNum) {
-       $("#feedback").text("You Guessed Right!!");
-    } else {
-      /*--- append each guess to list section --*/
-      $("#guessList").append("<li>" + userGuess + "</li>");
+    for (var i = 0; i < 6; i++) {
+      console.log("1userGuess is: " + userGuess);
+      console.log("1secretNum is: " + secretNum);
 
-      /*--- add 1 to number of guesses --*/
-      $("#count").text(numOfGuesses++);
-
-      /*--- void out input field for next guess ---*/
-      $("#userGuess").val("");
+      if (userGuess === secretNum) {
+         $("#feedback").text("You Guessed Right!!");
+      }
     }
   }
 
-  /*--- Reset for new game ---*/
+  /*--- reset for new game ---*/
   function newGame() {
-      document.location.reload(true);
+//      document.location.reload(true);
 
       // set number of guesses to 0
-//      numOfGuesses = 0;
+      numOfGuesses = 0;
 
       // create a new secret number
-//      secretNum = secretNumber();
+      secretNum = secretNumber();
 
       // reset users guess value
-//      $("#userGuess").val("");
+      $("#userGuess").val("");
 
       // reset choice list to no choices
-//      $("#guessList").empty();
+      $("#guessList").empty();
 
       // reset count
-//      $("#count").text(numOfGuesses);
+      $("#count").text(numOfGuesses);
   }
 
 
-
 	
-  /*--- Display information modal box ---*/
+  /*--- display information modal box ---*/
   $(".what").click(function(){
     $(".overlay").fadeIn(1000);
   });
 
-  /*--- Hide information modal box ---*/
+  /*--- hide information modal box ---*/
   $("a.close").click(function(){
     $(".overlay").fadeOut(1000);
   });
 
-  /*--- Start a new game ---*/
+  /*--- refresh fields for new game ---*/
   $(".new").click(function() {
     newGame();
   });
@@ -89,9 +98,8 @@ $(document).ready(function() {
   var secretNum = secretNumber();
   console.log("secret num: " + secretNum);
   var userGuess = userGuess();
-  console.log("user guess: " + userGuess);
 
-  gamePlay(secretNum, userGuess);
+  compareNumbers(userGuess, secretNum);
 
 
 
