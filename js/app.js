@@ -44,16 +44,15 @@ $(document).ready(function() {
   }
 
   /*--- game play ---*/
-  function compareNumbers(userGuess, secretNum) {
+  function gamePlay(secretNum) {
 
-    for (var i = 0; i < 6; i++) {
-      console.log("1userGuess is: " + userGuess);
-      console.log("1secretNum is: " + secretNum);
+    var correct = false;
 
+    while (numOfGuesses < 7 && correct) {
       if (userGuess === secretNum) {
-         $("#feedback").text("You Guessed Right!!");
+        $("#feedback").text("You Guessed Right!!");
       }
-    }
+
   }
 
   /*--- reset for new game ---*/
@@ -97,9 +96,8 @@ $(document).ready(function() {
 
   var secretNum = secretNumber();
   console.log("secret num: " + secretNum);
-  var userGuess = userGuess();
 
-  compareNumbers(userGuess, secretNum);
+  gamePlay(secretNum);
 
 
 
