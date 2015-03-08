@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   /*--- create random number 1 -100 ---*/
   function secretNumber() {
-    var randomNum = Math.floor(Math.random() * 100) + 1; //abs value
+    var randomNum = Math.floor(Math.random() * 100) + 1;
 
     return randomNum;
   }
@@ -52,7 +52,7 @@ $(document).ready(function() {
       if (userGuess === secretNum) {
         $("#feedback").text("You Guessed Right!!");
       }
-
+    }
   }
 
   /*--- reset for new game ---*/
