@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 $(document).ready(function() {
 
   var numOfGuesses = 0;
@@ -39,7 +37,7 @@ $(document).ready(function() {
   function gamePlay(guess) {
 //    var correct;
     /*--- test for proximity to secret number ---*/
-    if (guess == secretNum) {
+    if (guess === secretNum) {
       $("#feedback").text("You Guessed Right!!");
 //        correct = true;
     }
@@ -72,56 +70,27 @@ $(document).ready(function() {
 
   /*--- reset for new game ---*/
   function newGame() {
-//      document.location.reload(true);
 
-      // set number of guesses to 0
-      numOfGuesses = 0;
-
-      // create a new secret number
-      secretNum = secretNumber();
-
-      // reset users guess value
-      $("#userGuess").val("");
-
-      // reset choice list to no choices
-      $("#guessList").empty();
-
-      // reset count
-      $("#count").text(numOfGuesses);
-
-      // reset feedback message
-//      $("#feedback").();
-  }
->>>>>>> events
-
-var numOfGuesses;
-
-<<<<<<< HEAD
-/*--- Create random number 1 -100 ---*/
-var secretNumber = Math.floor(Math.random() * 100) + 1;
-console.log('secret number: ' + secretNumber);
-
-function newGame() {
-  // set number of guesses to 0
+    // set number of guesses to 0
     numOfGuesses = 0;
-    console.log('guesses: ' + numOfGuesses);
 
     // create a new secret number
-    secretNumber = Math.floor(Math.random() * 100) + 1;
-    console.log('secret number: ' + secretNumber);
+    secretNum = secretNumber();
 
     // reset users guess value
     $("#userGuess").val("");
-    console.log($("#userGuess").val());
 
     // reset choice list to no choices
     $("#guessList").empty();
-}
+
+    // reset count
+    $("#count").text(numOfGuesses);
+
+    // reset feedback message
+//      $("#feedback").();
+  }
 
 
-$(document).ready(function(){
-=======
->>>>>>> events
 	
   /*--- prevents reloading when submiting input ---*/
   $("form").submit(function(event) {
@@ -138,17 +107,6 @@ $(document).ready(function(){
     $(".overlay").fadeOut(1000);
   });
 
-<<<<<<< HEAD
-  /*--- Start a new game ---*/
-  $(".new").click(function() {
-    newGame();
-  });
-
-  /*--- Get value of input field --*/
-  $("#guessButton").click(function(){
-    var guess = $("#userGuess").val();
-    console.log("your guess: " + guess);
-=======
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
     newGame();
@@ -188,11 +146,10 @@ $(document).ready(function(){
   console.log("outside secret num: " + secretNum);
 
  
->>>>>>> events
 
-    $("#guessList").append("<li>" + guess + "</li>");
-    console.log("your list: " + $("#guessList").text());
-  })
 
 
 }); // end document.ready
+
+
+
