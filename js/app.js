@@ -98,4 +98,6 @@ $(document).ready(function() {
 
 /*
 - while loop for number of guesses
+- error reset message for #feedback
+- error reset input field #userguess to blank out
 */
