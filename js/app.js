@@ -3,39 +3,11 @@ $(document).ready(function() {
   var numOfGuesses = 0;
 
 
-
-  /*--- create random number 1-100 ---*/
-  function secretNumber() {
-    var randomNum = Math.floor(Math.random() * 100) + 1;
-
-    return randomNum;
-  }
-
-  /*--- get and validate user input ---*/
-//  function userGuess() {
-//
-//    /*-- get input and convert to number --*/
-//    var userNum = Number($("#userGuess").val());
-//
-//    if (userNum >= 1 && userNum <= 100 && !isNaN(userNum)) {
-//      /*--- append each guess to list section --*/
-//      $("#guessList").append("<li>" + userNum + "</li>");
-//      /*--- add 1 to number of guesses --*/
-//      $("#count").text(++numOfGuesses);
-//      /*--- void out input field for next guess ---*/
-//      $("#userGuess").val("");
-//    }
-//    else {
-//      /*--- error message ---*/
-//      $("#feedback").text("Pick a number 1 through 100");
-//      /*--- void out input field for next guess ---*/
-//      $("#userGuess").val("");
-//    }
-//  }
-
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess) {
-//    var correct;
+
+    //    var correct;
+
     /*--- test for proximity to secret number ---*/
     if (guess === secretNum) {
       $("#feedback").text("You Guessed Right!!");
@@ -68,29 +40,6 @@ $(document).ready(function() {
 //    }
   }
 
-  /*--- reset for new game ---*/
-  function newGame() {
-
-    // set number of guesses to 0
-    numOfGuesses = 0;
-
-    // create a new secret number
-    secretNum = secretNumber();
-
-    // reset users guess value
-    $("#userGuess").val("");
-
-    // reset choice list to no choices
-    $("#guessList").empty();
-
-    // reset count
-    $("#count").text(numOfGuesses);
-
-    // reset feedback message
-//      $("#feedback").();
-  }
-
-
 	
   /*--- prevents reloading when submiting input ---*/
   $("form").submit(function(event) {
@@ -109,43 +58,35 @@ $(document).ready(function() {
 
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
-    newGame();
+    location.reload(false); /* reloads from cache */
   });
 
   /*--- gets value of user input and validates; returns user number ---*/
   $("#guessButton").click(function() {
 
     /*-- get input and convert to number --*/
-    var userNum = Number($("#userGuess").val());
+    var playersGuess = Number($("#userGuess").val());
 
-    if (userNum >= 1 && userNum <= 100 && !isNaN(userNum)) {
+    if (playersGuess >= 1 && playersGuess <= 100) {
       numOfGuesses++;
       /*--- append each guess to list section --*/
-      $("#guessList").append("<li>" + userNum + "</li>");
+      $("#guessList").append("<li>" + playersGuess + "</li>");
       /*--- add 1 to number of guesses --*/
       $("#count").text(numOfGuesses);
       /*--- void out input field for next guess ---*/
       $("#userGuess").val("");
 
       /*--- call game play function passing in validated user number ---*/
-      gamePlay(userNum);
+      gamePlay(playersGuess);
     }
 
     else {
       /*--- error message ---*/
       $("#feedback").text("Pick a number 1 through 100");
       /*--- void out input field for next guess ---*/
-      $("#userGuess").val("");
+      $("#userGuess").reset();
     }
   });
-
-
-
-
-  var secretNum = secretNumber();
-  console.log("outside secret num: " + secretNum);
-
- 
 
 
 
@@ -153,3 +94,11 @@ $(document).ready(function() {
 
 
 
+/*
+
+- win flag
+- function for abs difference
+- break down into all functions
+- fix secret Number
+
+*/
