@@ -1,17 +1,17 @@
 $(document).ready(function() {
 
   var numOfGuesses = 0;
+  var secretNum = Math.floor(Math.random() * 100) + 1;
 
 
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess) {
-
-    //    var correct;
+    console.log('secret: ' + secretNum);
+    var correct = false;
 
     /*--- test for proximity to secret number ---*/
     if (guess === secretNum) {
-      $("#feedback").text("You Guessed Right!!");
-//        correct = true;
+      correct = true;
     }
     else if ((guess - secretNum) < 5) {
       $("#feedback").text("You Smoking!");
@@ -33,11 +33,11 @@ $(document).ready(function() {
     }
 
     /*--- either correct guess or run out of guesses ---*/
-//    if (correct) {
-//      $("#feedback").text("You Guessed Right!!");
-//    } else {
-//      $("#feedback").text("You Are Out Of Guesses");
-//    }
+    if (correct) {
+      $("#feedback").text("You Guessed Right!!");
+    } else {
+      $("#feedback").text("You Are Out Of Guesses");
+    }
   }
 
 	
@@ -89,16 +89,13 @@ $(document).ready(function() {
   });
 
 
-
 }); // end document.ready
 
 
 
+
+
+
 /*
-
-- win flag
-- function for abs difference
-- break down into all functions
-- fix secret Number
-
+- while loop for number of guesses
 */
