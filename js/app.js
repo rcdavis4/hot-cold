@@ -6,6 +6,7 @@ $(document).ready(function() {
 
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess) {
+
     console.log('secret: ' + secretNum);
     var correct = false;
 
@@ -14,7 +15,7 @@ $(document).ready(function() {
       correct = true;
     }
     else if ((guess - secretNum) < 5) {
-      $("#feedback").text("You Smoking!");
+      $("#feedback").text("You Are Smoking!");
     }
     else if ((guess - secretNum) < 10) {
       $("#feedback").text("You Are Hot");
@@ -35,9 +36,8 @@ $(document).ready(function() {
     /*--- either correct guess or run out of guesses ---*/
     if (correct) {
       $("#feedback").text("You Guessed Right!!");
-    } else {
-      $("#feedback").text("You Are Out Of Guesses");
     }
+
   }
 
 	
@@ -64,7 +64,7 @@ $(document).ready(function() {
   /*--- gets value of user input and validates; returns user number ---*/
   $("#guessButton").click(function() {
 
-    /*-- get input and convert to number --*/
+    /*-- get input and convert to number; call gameplay --*/
     var playersGuess = Number($("#userGuess").val());
 
     if (playersGuess >= 1 && playersGuess <= 100) {
@@ -83,8 +83,6 @@ $(document).ready(function() {
     else {
       /*--- error message ---*/
       $("#feedback").text("Pick a number 1 through 100");
-      /*--- void out input field for next guess ---*/
-      $("#userGuess").reset();
     }
   });
 
@@ -97,6 +95,8 @@ $(document).ready(function() {
 
 
 /*
+- eliminate form message after every guess
+- add enter key submission
 - while loop for number of guesses
 - error reset message for #feedback
 - error reset input field #userguess to blank out
