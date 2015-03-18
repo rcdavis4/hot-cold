@@ -2,31 +2,32 @@ $(document).ready(function() {
 
   var numOfGuesses = 0;
   var secretNum = Math.floor(Math.random() * 100) + 1;
-
+  console.log('secret num: ' + secretNum);
 
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess) {
 
     console.log('secret: ' + secretNum);
     var correct = false;
+    var diff = Math.abs(guess - secretNum);
 
     /*--- test for proximity to secret number ---*/
     if (guess === secretNum) {
       correct = true;
     }
-    else if ((guess - secretNum) < 5) {
+    else if (diff < 5) {
       $("#feedback").text("You Are Smoking!");
     }
-    else if ((guess - secretNum) < 10) {
+    else if (diff < 10) {
       $("#feedback").text("You Are Hot");
     }
-    else if ((guess - secretNum) < 20) {
+    else if (diff < 20) {
       $("#feedback").text("You Are Warm");
     }
-    else if ((guess - secretNum) < 30) {
+    else if (diff < 30) {
       $("#feedback").text("You Are Cool");
     }
-    else if ((guess - secretNum) < 40) {
+    else if (diff < 40) {
       $("#feedback").text("You Are Cold");
     }
     else {
@@ -73,8 +74,6 @@ $(document).ready(function() {
       $("#guessList").append("<li>" + playersGuess + "</li>");
       /*--- add 1 to number of guesses --*/
       $("#count").text(numOfGuesses);
-      /*--- void out input field for next guess ---*/
-      $("#userGuess").val("");
 
       /*--- call game play function passing in validated user number ---*/
       gamePlay(playersGuess);
@@ -84,6 +83,9 @@ $(document).ready(function() {
       /*--- error message ---*/
       $("#feedback").text("Pick a number 1 through 100");
     }
+
+    /*--- void out input field for next guess ---*/
+      $("#userGuess").val("");
   });
 
 
@@ -100,4 +102,5 @@ $(document).ready(function() {
 - while loop for number of guesses
 - error reset message for #feedback
 - error reset input field #userguess to blank out
+- fix new game
 */
