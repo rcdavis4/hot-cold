@@ -1,13 +1,18 @@
 $(document).ready(function() {
 
+/*--- GLOBALS ---*/
   var numOfGuesses = 0;
-  var secretNum = Math.floor(Math.random() * 100) + 1;
-  console.log('secret num: ' + secretNum);
+  var secretNum;
 
+
+/*--- FUNCTION DECLARATIONS ---*/
+  /*--- generate random secret number ---*/
+  function secretNumber() {
+    secretNum = Math.floor(Math.random() * 100) + 1;
+  }
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess) {
 
-    console.log('secret: ' + secretNum);
     var correct = false;
     var diff = Math.abs(guess - secretNum);
 
@@ -41,29 +46,47 @@ $(document).ready(function() {
 
   }
 
-	
+
+/*--- EVENT HANDLERS ---*/
   /*--- prevents reloading when submiting input ---*/
   $("form").submit(function(event) {
     event.preventDefault();
   });
-
+  /*--- autofocuses cursor into input field ---*/
+  $("#userGuess").focus();
   /*--- display information modal box ---*/
   $(".what").click(function(){
     $(".overlay").fadeIn(1000);
   });
-
   /*--- hide information modal box ---*/
   $("a.close").click(function(){
     $(".overlay").fadeOut(1000);
   });
-
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
-    location.reload(false); /* reloads from cache */
-  });
+    // set number of guesses to 0
+    numOfGuesses = 0;
 
+    // create a new secret number
+    secretNumber();
+
+    // reset users guess value
+    $("#userGuess").val("");
+
+    // reset choice list to no choices
+    $("#guessList").empty();
+
+    // reset count
+    $("#count").text(numOfGuesses);
+
+    // reset feedback message
+    $("#feedback").text('Make your Guess!');
+  });
   /*--- gets value of user input and validates; returns user number ---*/
   $("#guessButton").click(function() {
+
+    /*--- autofocuses cursor into input field ---*/
+    $("#userGuess").focus();
 
     /*-- get input and convert to number; call gameplay --*/
     var playersGuess = Number($("#userGuess").val());
@@ -89,6 +112,11 @@ $(document).ready(function() {
   });
 
 
+/*--- FUNCTION CALLS ---*/
+  secretNumber();
+  console.log(secretNum);
+
+
 }); // end document.ready
 
 
@@ -97,10 +125,6 @@ $(document).ready(function() {
 
 
 /*
-- eliminate form message after every guess
 - add enter key submission
 - while loop for number of guesses
-- error reset message for #feedback
-- error reset input field #userguess to blank out
-- fix new game
 */
