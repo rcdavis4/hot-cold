@@ -1,8 +1,18 @@
 $(document).ready(function() {
 
+
 /*--- GLOBALS ---*/
-  var numOfGuesses = 0;
   var secretNum;
+  var numOfGuesses = 0;
+
+
+/*--- SELECTORS ---*/
+  var $feedback     = $("#feedback");
+  var $overlay      = $(".overlay");
+  var $userGuess    = $("#userGuess");
+  var $guessList    = $("#guessList");
+  var $count        = $("#count");
+  var $guessButton  = $("#guessButton");
 
 
 /*--- FUNCTION DECLARATIONS ---*/
@@ -10,40 +20,62 @@ $(document).ready(function() {
   function secretNumber() {
     secretNum = Math.floor(Math.random() * 100) + 1;
   }
+  /*--- disables input field and button after correct guess ---*/
+  function disableInput() {
+    $userGuess.prop('disabled', true)
+    $guessButton.prop('disabled', true);
+  }
+  /*--- reenables input and button functionality ---*/
+  function enableInput() {
+    $userGuess.prop('disabled', false)
+    $guessButton.prop('disabled', false);
+  }
+  /*--- displays out of guesses message and calls disableInput ---*/
+  function outOfGuesses() {
+    $feedback.text("You Are Out Of Guesses.");
+    disableInput();
+  }
   /*--- game play taking in guess and secretNum ---*/
-  function gamePlay(guess) {
+  function gamePlay(guess, numOfGuess) {
 
     var correct = false;
+    /*--- get absolute value to make all comparisons positive*/
     var diff = Math.abs(guess - secretNum);
 
-    /*--- test for proximity to secret number ---*/
-    if (guess === secretNum) {
-      correct = true;
-    }
-    else if (diff < 5) {
-      $("#feedback").text("You Are Smoking!");
-    }
-    else if (diff < 10) {
-      $("#feedback").text("You Are Hot");
-    }
-    else if (diff < 20) {
-      $("#feedback").text("You Are Warm");
-    }
-    else if (diff < 30) {
-      $("#feedback").text("You Are Cool");
-    }
-    else if (diff < 40) {
-      $("#feedback").text("You Are Cold");
-    }
-    else {
-      $("#feedback").text("You Are Freezing!");
+    /*--- test for correct and limit number of guesses ---*/
+    if (numOfGuesses < 8) {
+      /*--- test for proximity to secret number ---*/
+      if (guess === secretNum) {
+        correct = true;
+      }
+      else if (diff < 5) {
+        $feedback.text("You Are Smoking!");
+      }
+      else if (diff < 10) {
+        $feedback.text("You Are Hot");
+      }
+      else if (diff < 20) {
+        $feedback.text("You Are Warm");
+      }
+      else if (diff < 30) {
+        $feedback.text("You Are Cool");
+      }
+      else if (diff < 40) {
+        $feedback.text("You Are Cold");
+      }
+      else {
+        $feedback.text("You Are Freezing!");
+      }
     }
 
-    /*--- either correct guess or run out of guesses ---*/
+    /*--- either correct guess, or out of guesses ---*/
     if (correct) {
-      $("#feedback").text("You Guessed Right!!");
+      $feedback.text("You Guessed Right!!");
+      disableInput();
     }
-
+    else if (numOfGuesses > 7) {
+      outOfGuesses();
+    }
   }
 
 
@@ -53,14 +85,14 @@ $(document).ready(function() {
     event.preventDefault();
   });
   /*--- autofocuses cursor into input field ---*/
-  $("#userGuess").focus();
+  $userGuess.focus();
   /*--- display information modal box ---*/
   $(".what").click(function(){
-    $(".overlay").fadeIn(1000);
+    $overlay.fadeIn(1000);
   });
   /*--- hide information modal box ---*/
   $("a.close").click(function(){
-    $(".overlay").fadeOut(1000);
+    $overlay.fadeOut(1000);
   });
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
@@ -71,44 +103,54 @@ $(document).ready(function() {
     secretNumber();
 
     // reset users guess value
-    $("#userGuess").val("");
+    $userGuess.val("");
 
     // reset choice list to no choices
-    $("#guessList").empty();
+    $guessList.empty();
 
     // reset count
-    $("#count").text(numOfGuesses);
+    $count.text(numOfGuesses);
 
     // reset feedback message
-    $("#feedback").text('Make your Guess!');
+    $feedback.text("Make your Guess!");
+
+    // takes away disable function
+    enableInput();
+
   });
   /*--- gets value of user input and validates; returns user number ---*/
-  $("#guessButton").click(function() {
+  $guessButton.click(function() {
 
     /*--- autofocuses cursor into input field ---*/
-    $("#userGuess").focus();
+    $userGuess.focus();
 
     /*-- get input and convert to number; call gameplay --*/
-    var playersGuess = Number($("#userGuess").val());
+    var playersGuess = Number($userGuess.val());
 
     if (playersGuess >= 1 && playersGuess <= 100) {
       numOfGuesses++;
       /*--- append each guess to list section --*/
-      $("#guessList").append("<li>" + playersGuess + "</li>");
+      $guessList.append("<li>" + playersGuess + "</li>");
       /*--- add 1 to number of guesses --*/
-      $("#count").text(numOfGuesses);
+      $count.text(numOfGuesses);
 
       /*--- call game play function passing in validated user number ---*/
-      gamePlay(playersGuess);
+      gamePlay(playersGuess, numOfGuesses);
     }
 
     else {
       /*--- error message ---*/
-      $("#feedback").text("Pick a number 1 through 100");
+      $feedback.text("Pick a number 1 through 100");
     }
 
     /*--- void out input field for next guess ---*/
-      $("#userGuess").val("");
+      $userGuess.val("");
+  });
+  /*--- triggers button event when pressing enter ---*/
+  $(document).keyup(function(event) {
+    if(event.which == 13) {
+      $guessButton.click();
+    }
   });
 
 
@@ -120,11 +162,7 @@ $(document).ready(function() {
 }); // end document.ready
 
 
-
-
-
-
 /*
-- add enter key submission
-- while loop for number of guesses
+  - enter key triggers button
+  - count down guesses
 */
