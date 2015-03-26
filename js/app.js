@@ -13,9 +13,10 @@ $(document).ready(function() {
   var $guessList    = $("#guessList");
   var $count        = $("#count");
   var $guessButton  = $("#guessButton");
+  var $document     = $(document);
 
 
-/*--- FUNCTION DECLARATIONS ---*/
+/*--- FUNCTIONS ---*/
   /*--- generate random secret number ---*/
   function secretNumber() {
     secretNum = Math.floor(Math.random() * 100) + 1;
@@ -75,6 +76,12 @@ $(document).ready(function() {
     }
     else if (numOfGuesses > 7) {
       outOfGuesses();
+    }
+  }
+  /*--- enter key press triggers button click ---*/
+  var enterKey = function (event) {
+    if (event.which == 13) {
+      $guessButton.click();
     }
   }
 
@@ -146,12 +153,8 @@ $(document).ready(function() {
     /*--- void out input field for next guess ---*/
       $userGuess.val("");
   });
-  /*--- triggers button event when pressing enter ---*/
-  $(document).keyup(function(event) {
-    if(event.which == 13) {
-      $guessButton.click();
-    }
-  });
+  /*--- keyup event calls enterKey function ---*/
+  $document.keyup(enterKey);
 
 
 /*--- FUNCTION CALLS ---*/
@@ -160,9 +163,3 @@ $(document).ready(function() {
 
 
 }); // end document.ready
-
-
-/*
-  - enter key triggers button
-  - count down guesses
-*/
