@@ -1,12 +1,5 @@
 $(document).ready(function() {
 
-<<<<<<< HEAD
-/*--- GLOBALS ---*/
-  var numOfGuesses = 0;
-  var secretNum;
-
-
-=======
 
 /*--- GLOBALS ---*/
   var secretNum;
@@ -23,18 +16,11 @@ $(document).ready(function() {
   var $document     = $(document);
 
 
-<<<<<<< HEAD
->>>>>>> extraFunc
-/*--- FUNCTION DECLARATIONS ---*/
-=======
 /*--- FUNCTIONS ---*/
->>>>>>> extraFunc
   /*--- generate random secret number ---*/
   function secretNumber() {
     secretNum = Math.floor(Math.random() * 100) + 1;
   }
-<<<<<<< HEAD
-=======
   /*--- disables input field and button after correct guess ---*/
   function disableInput() {
     $userGuess.prop('disabled', true)
@@ -50,7 +36,6 @@ $(document).ready(function() {
     $feedback.text("You Are Out Of Guesses.");
     disableInput();
   }
->>>>>>> extraFunc
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess, numOfGuess) {
 
@@ -101,21 +86,13 @@ $(document).ready(function() {
   }
 
 
-<<<<<<< HEAD
-/*--- EVENT HANDLERS ---*/
-=======
 /*--- EVENTS ---*/
->>>>>>> extraFunc
   /*--- prevents reloading when submiting input ---*/
   $("form").submit(function(event) {
     event.preventDefault();
   });
   /*--- autofocuses cursor into input field ---*/
-<<<<<<< HEAD
-  $("#userGuess").focus();
-=======
   $userGuess.focus();
->>>>>>> extraFunc
   /*--- display information modal box ---*/
   $(".what").click(function(){
     $overlay.fadeIn(1000);
@@ -131,20 +108,6 @@ $(document).ready(function() {
 
     // create a new secret number
     secretNumber();
-<<<<<<< HEAD
-
-    // reset users guess value
-    $("#userGuess").val("");
-
-    // reset choice list to no choices
-    $("#guessList").empty();
-
-    // reset count
-    $("#count").text(numOfGuesses);
-
-    // reset feedback message
-    $("#feedback").text('Make your Guess!');
-=======
 
     // reset users guess value
     $userGuess.val("");
@@ -161,16 +124,12 @@ $(document).ready(function() {
     // takes away disable function
     enableInput();
 
->>>>>>> extraFunc
   });
   /*--- gets value of user input and validates; returns user number ---*/
   $guessButton.click(function() {
 
     /*--- autofocuses cursor into input field ---*/
     $userGuess.focus();
-
-    /*--- autofocuses cursor into input field ---*/
-    $("#userGuess").focus();
 
     /*-- get input and convert to number; call gameplay --*/
     var playersGuess = Number($userGuess.val());
@@ -201,29 +160,6 @@ $(document).ready(function() {
 /*--- FUNCTION CALLS ---*/
   secretNumber();
   console.log(secretNum);
-<<<<<<< HEAD
 
 
 }); // end document.ready
-
-
-=======
->>>>>>> extraFunc
-
-
-}); // end document.ready
-<<<<<<< HEAD
-
-
-/*
-<<<<<<< HEAD
-- add enter key submission
-- while loop for number of guesses
-*/
-=======
-  - enter key triggers button
-  - count down guesses
-*/
->>>>>>> extraFunc
-=======
->>>>>>> extraFunc
