@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 
 /*--- FUNCTIONS ---*/
-  /*--- generate random secret number ---*/
+	/*--- generate random secret number ---*/
   function secretNumber() {
     secretNum = Math.floor(Math.random() * 100) + 1;
   }
@@ -94,9 +94,12 @@ $(document).ready(function() {
   /*--- autofocuses cursor into input field ---*/
   $userGuess.focus();
   /*--- display information modal box ---*/
-  $(".what").click(function(){
-    $overlay.fadeIn(1000);
-  });
+ 	$('.modal-trigger').leanModal({
+		dismissible: true, // Modal can be dismissed by clicking outside of the modal
+		opacity: .5, // Opacity of modal background
+		in_duration: 300, // Transition in duration
+		out_duration: 200, // Transition out duration
+	});
   /*--- hide information modal box ---*/
   $("a.close").click(function(){
     $overlay.fadeOut(1000);
