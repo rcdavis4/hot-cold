@@ -25,9 +25,9 @@
 			<nav>
 				<div class="nav-wrapper blue-grey lighten-4">
 					<a href="#modal1" class="modal-trigger">How</a>
-					<ul class="right">
-						<li class="new">Restart</li>
-					</ul>
+					<span class="right">
+						<span class="new">Restart</span>
+					</span>
 				</div>
   		</nav>
 
@@ -49,13 +49,47 @@
 						<div class="modal-footer">
       				<a href="#!" class="close modal-action modal-close waves-effect red waves-light btn">Got It?</a>
     				</div>
+    				
 					</div>
 				</div>
 			</div>
 
 		
-			<!-- logo text -->
-			<h1><span class="hot">HOT</span> or <span class="cold">COLD</span></h1>
+			<!-- hot/cold title -->
+			<h1 id="game-title" class="title">
+				<span class="hot">HOT</span> or <span class="cold">COLD</span>
+			</h1>
+		
+		
+			<!-- Out of Guesses Modal -->
+			<div class="modal" id="modalOutOfGuesses">
+				
+				<div class="modal-content">
+					<h3 class="out-of-guesses">You Are Out of Guesses!</h3>
+				</div>
+				
+				
+				<div class="modal-footer">
+      		<a href="#!" class="close modal-action modal-close waves-effect red waves-light btn">Close</a>
+    		</div>
+				
+			</div>
+			
+			
+			<!-- guessed right modal -->
+			<div class="modal" id="modalCorrect">
+			
+				<div class="modal-content">
+					<h3 class="correct-guess">You Guessed Correctly!</h3>
+				</div>
+				
+
+				<div class="modal-footer">
+      		<a href="#!" class="close modal-action modal-close waves-effect red waves-light btn">Close</a>
+    		</div>
+				
+			</div>
+
 
 		</header>
 
@@ -64,34 +98,55 @@
 
 		<!-- Game Section -->
 		<section class="game">
-			
-			<!-- add thermometer here -->
-			<div id="feedback" class="feedback-msg"></div>
-
 		
+	
 			<div class="row">
 			
-				<form class="col s12">
+				<form class="col s8 right">
 					<div class="row">
 					
-						<div class="input-field col s12 blue-grey lighten-4">
+						<div class="input-field col s12">
 							<input id="userGuess" type="text" maxlength="3" autocomplete="off">
 							<label for="userGuess">Make your guess!</label>
 						</div>	
 						
 						<div class="submit-btn">
-							<button type="submit" id="guessButton" class="btn waves-effect waves-light blue-grey lighten-4" name="action" value="Guess">Submit</button>
+							<button type="submit" id="guessButton" class="btn waves-effect waves-light blue-grey lighten-2" name="action" value="Guess">Submit</button>
 						</div>			
 										
 					</div>	
 				</form>
 				
 			</div>
-		
-								
-			<ul id="guessList" class="guessBox clearfix"></ul>
+			
+			
+			<div class="guess-title">
+				<p>Guesses:</p>
+			</div>					
+									
+			<div id="guessList" class="guessBox"></div>
 
 		</section>
+		
+		
+		
+		
+		<!-- THERMOMETER -->
+			<div class="thermometer">
+ 			
+ 			
+  			<span class="glass">
+					<span class="amount"></span>
+  			</span>
+  		
+  		
+				<div class="bulb">	
+					<span class="red-circle"></span>
+					<span class="filler"></span>
+				</div>
+
+			</div>
+		
 		
 		
 		

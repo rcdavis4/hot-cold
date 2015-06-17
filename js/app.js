@@ -5,6 +5,8 @@ $(document).ready(function() {
   var secretNum;
   var numOfGuesses = 0;
 
+	
+	
 
 /*--- SELECTORS ---*/
   var $feedback     = $("#feedback");
@@ -13,29 +15,31 @@ $(document).ready(function() {
   var $guessList    = $("#guessList");
   var $count        = $("#count");
   var $guessButton  = $("#guessButton");
+	var $amount				= $(".amount");
   var $document     = $(document);
 
+	
+	
 
 /*--- FUNCTIONS ---*/
 	/*--- generate random secret number ---*/
   function secretNumber() {
-    secretNum = Math.floor(Math.random() * 100) + 1;
+//    secretNum = Math.floor(Math.random() * 100) + 1;
+		secretNum = 10;
   }
+	
   /*--- disables input field and button after correct guess ---*/
   function disableInput() {
     $userGuess.prop('disabled', true)
     $guessButton.prop('disabled', true);
   }
-  /*--- reenables input and button functionality ---*/
+  
+	/*--- reenables input and button functionality ---*/
   function enableInput() {
     $userGuess.prop('disabled', false)
     $guessButton.prop('disabled', false);
   }
-  /*--- displays out of guesses message and calls disableInput ---*/
-  function outOfGuesses() {
-    $feedback.text("You Are Out Of Guesses.");
-    disableInput();
-  }
+
   /*--- game play taking in guess and secretNum ---*/
   function gamePlay(guess, numOfGuess) {
 
@@ -44,40 +48,50 @@ $(document).ready(function() {
     var diff = Math.abs(guess - secretNum);
 
     /*--- test for correct and limit number of guesses ---*/
-    if (numOfGuesses < 8) {
+    if (numOfGuesses <= 10) {
       /*--- test for proximity to secret number ---*/
       if (guess === secretNum) {
         correct = true;
       }
       else if (diff < 5) {
-        $feedback.text("You Are Smoking!");
+        $amount.css("height", "110%");
       }
       else if (diff < 10) {
-        $feedback.text("You Are Hot");
+        $amount.css("height", "90%");
       }
       else if (diff < 20) {
-        $feedback.text("You Are Warm");
+        $amount.css("height", "70%");
       }
       else if (diff < 30) {
-        $feedback.text("You Are Cool");
+        $amount.css("height", "50%");
       }
       else if (diff < 40) {
-        $feedback.text("You Are Cold");
+        $amount.css("height", "30%");
       }
       else {
-        $feedback.text("You Are Freezing!");
+        $amount.css("height", "0%");
       }
     }
 
     /*--- either correct guess, or out of guesses ---*/
     if (correct) {
-      $feedback.text("You Guessed Right!!");
-      disableInput();
+			$('#modalCorrect').openModal({
+				dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      	opacity: .5, // Opacity of modal background
+      	in_duration: 300, // Transition in duration
+      	out_duration: 200, // Transition out duration
+			});
     }
-    else if (numOfGuesses > 7) {
-      outOfGuesses();
+    else if (numOfGuesses > 9) {
+      $('#modalOutOfGuesses').openModal({
+				dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      	opacity: .5, // Opacity of modal background
+      	in_duration: 300, // Transition in duration
+      	out_duration: 200, // Transition out duration
+			});
     }
   }
+	
   /*--- enter key press triggers button click ---*/
   var enterKey = function (event) {
     if (event.which == 13) {
@@ -86,13 +100,17 @@ $(document).ready(function() {
   }
 
 
+	
+	
 /*--- EVENTS ---*/
   /*--- prevents reloading when submiting input ---*/
   $("form").submit(function(event) {
     event.preventDefault();
   });
+	
   /*--- autofocuses cursor into input field ---*/
   $userGuess.focus();
+	
   /*--- display information modal box ---*/
  	$('.modal-trigger').leanModal({
 		dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -100,10 +118,12 @@ $(document).ready(function() {
 		in_duration: 300, // Transition in duration
 		out_duration: 200, // Transition out duration
 	});
+	
   /*--- hide information modal box ---*/
   $("a.close").click(function(){
     $overlay.fadeOut(1000);
   });
+	
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
     // set number of guesses to 0
@@ -121,13 +141,11 @@ $(document).ready(function() {
     // reset count
     $count.text(numOfGuesses);
 
-    // reset feedback message
-    $feedback.text("Make your Guess!");
-
     // takes away disable function
     enableInput();
 
   });
+	
   /*--- gets value of user input and validates; returns user number ---*/
   $guessButton.click(function() {
 
@@ -140,7 +158,7 @@ $(document).ready(function() {
     if (playersGuess >= 1 && playersGuess <= 100) {
       numOfGuesses++;
       /*--- append each guess to list section --*/
-      $guessList.append("<li>" + playersGuess + "</li>");
+      $guessList.append("<span>" + playersGuess + "</span>");
       /*--- add 1 to number of guesses --*/
       $count.text(numOfGuesses);
 
@@ -150,16 +168,20 @@ $(document).ready(function() {
 
     else {
       /*--- error message ---*/
-      $feedback.text("Pick a number 1 through 100");
+			$title.addClass("hidden");
+//      $feedback.text("Pick a number 1 through 100");
     }
 
     /*--- void out input field for next guess ---*/
       $userGuess.val("");
   });
+	
   /*--- keyup event calls enterKey function ---*/
   $document.keyup(enterKey);
 
 
+	
+	
 /*--- FUNCTION CALLS ---*/
   secretNumber();
   console.log(secretNum);
