@@ -81,6 +81,8 @@ $(document).ready(function() {
       	in_duration: 300, // Transition in duration
       	out_duration: 200, // Transition out duration
 			});
+			disableInput();
+			
     }
     else if (numOfGuesses > 9) {
       $('#modalOutOfGuesses').openModal({
@@ -89,6 +91,7 @@ $(document).ready(function() {
       	in_duration: 300, // Transition in duration
       	out_duration: 200, // Transition out duration
 			});
+			disableInput();
     }
   }
 	
