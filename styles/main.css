@@ -24,7 +24,7 @@ nav {
 	margin-top: 5px;
 }
 	
-.modal-content h3 {
+.instruction-title {
 	text-align: center;
 	margin-bottom: 2.6rem;
 	padding-bottom: 0.5rem;
@@ -153,6 +153,18 @@ h1 {
 	font-size: 1.2rem;
 }
 
+.correct-guess {
+	font-size: 3.4rem;
+	text-align: center;
+	padding-top: 1.6rem;
+}
+
+.out-of-guesses {
+	font-size: 3.4rem;
+	text-align: center;
+	padding-top: 1.6rem;
+	line-height: 3.6rem;
+}
 
 
 /*--------------------------*\
