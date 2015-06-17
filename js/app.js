@@ -52,20 +52,21 @@ $(document).ready(function() {
       /*--- test for proximity to secret number ---*/
       if (guess === secretNum) {
         correct = true;
-      }
-      else if (diff < 5) {
-        $amount.css("height", "110%");
+				$amount.css("height", "110%");
       }
       else if (diff < 10) {
-        $amount.css("height", "90%");
+        $amount.css("height", "110%");
       }
       else if (diff < 20) {
-        $amount.css("height", "70%");
+        $amount.css("height", "90%");
       }
       else if (diff < 30) {
-        $amount.css("height", "50%");
+        $amount.css("height", "70%");
       }
       else if (diff < 40) {
+        $amount.css("height", "50%");
+      }
+      else if (diff < 50) {
         $amount.css("height", "30%");
       }
       else {

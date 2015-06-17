@@ -230,3 +230,77 @@ h1 {
   right: -15px;
   z-index: 30;
 }
+
+
+
+/*------------------------*\
+		#MEDIA QUERIES
+\*------------------------*/
+
+@media only screen 
+	and (min-width: 480px)
+	and (max-width: 800px) {
+	
+	nav {
+		height: 60px;
+	}
+		
+	.title {
+		display: inline-block;
+		width: 100%;
+		margin-left: 0;
+		font-size: 4rem;
+		margin-top: 6rem;
+	}
+	
+	.game {
+		width: 80%;
+		margin-left: 1.2rem;
+		margin-top: 7.5rem;
+	}
+		
+	.thermometer {
+		margin-top: 3rem;
+		margin-left: 3.5rem;
+	}
+}
+
+@media only screen 
+	and (min-width: 801px) 
+	and (max-width: 1400px) {
+	
+	nav {
+		height: 60px;
+	}
+		
+	.title {
+		display: inline-block;
+		width: 100%;
+		margin-left: 0;
+		margin-top: 4rem;
+		font-size: 7rem;
+	}
+	
+	.game {
+		width: 80%;
+		margin-left: 1.2rem;
+		margin-top: 7.5rem;
+	}
+		
+	.thermometer {
+		margin-top: 5rem;
+		margin-left: 9rem;
+	}
+		
+	.guessBox {
+		margin-left: 36%;
+	}
+		
+	.guess-title {
+		margin-left: 36%;
+		margin-top: 5rem;
+	}
+	
+}
+
+
