@@ -143,6 +143,9 @@ $(document).ready(function() {
 
     // reset count
     $count.text(numOfGuesses);
+		
+		// lowers temperature
+		$amount.css("height", "0%");
 
     // takes away disable function
     enableInput();
