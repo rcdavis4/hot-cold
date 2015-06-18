@@ -1,0 +1,446 @@
+/*--------------------------*\
+		#GLOBAL
+\*--------------------------*/
+
+nav {
+	height: 50px;
+}
+
+.hidden {
+	display: none;
+}
+
+
+/*--------------------------*\
+		#
+\*--------------------------*/
+
+.title {
+	display: inline-block;
+	text-align: center;
+	margin-left: 34%;
+	font-size: 2.8rem;
+	color: #555;
+	margin-top: 5px;
+}
+	
+.instruction-title {
+	text-align: center;
+	margin-bottom: 2.6rem;
+	padding-bottom: 0.5rem;
+	color: #555;
+	border-bottom: 3px solid #555;
+}
+
+.modal-trigger {
+	padding-left: 1.4rem;
+	font-size: 1.4rem;
+	color: #78909c;
+}
+
+.modal-trigger:hover {
+	color: #455a64;
+	-webkit-transition: ease 0.2s;
+	        transition: ease 0.2s;
+}
+
+.new {
+	padding-right: 1.4rem;
+	font-size: 1.4rem;
+	color: #78909c;
+}
+
+.new:hover {
+	color: #455a64;
+	-webkit-transition: ease 0.2s;
+	        transition: ease 0.2s;
+	cursor: pointer;
+}
+
+.instructions li {
+	margin-bottom: 1.8rem;
+	font-size: 1.1rem;
+}
+
+h1 {
+	text-align: center;
+}
+
+.hot {
+	color: #e57373;
+	font-weight: 700;
+}
+
+.cold {
+	color: #4D79A3;
+	font-weight: 700;
+}
+
+.game {
+	display: inline-block;
+	width: 80%;
+	float: left;
+	margin-left: 8%;
+	margin-top: 3.2rem;
+}
+
+.game button {
+	margin-top: -2rem;
+	color: #fff;
+	margin-bottom: 2rem;
+}
+
+.submit-btn {
+	text-align: center;
+}
+
+.input-field {
+	margin-top: -1rem;
+	margin-bottom: 2.5rem;
+}
+
+.input-field label {
+	font-size: 1.2rem;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+	color: #999;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 0 0 #ccc;
+}
+
+.guess-title {
+	display: inline-block;
+	width: 60%;
+	margin-left: 40%;
+	margin-bottom: 1rem;
+	color: #777;
+	font-size: 1.2rem;
+	border-bottom: 2px solid #777;
+	padding-bottom: 5px;
+}
+
+.guessBox {
+	width: 60%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	margin-left: 40%;
+}
+
+.guessBox span {
+	margin-right: 1rem;
+	margin-bottom: 1rem;
+	color: #666;
+	font-size: 1.2rem;
+}
+
+.correct-guess {
+	font-size: 3.4rem;
+	text-align: center;
+	padding-top: 1.6rem;
+}
+
+.out-of-guesses {
+	font-size: 3.4rem;
+	text-align: center;
+	padding-top: 1.6rem;
+	line-height: 3.6rem;
+}
+
+
+/*--------------------------*\
+		#THERMOMETER
+\*--------------------------*/
+
+.thermometer {
+	margin-top: -30px;
+	margin-left: 2.4rem;
+  width: 100px;
+}
+
+.glass {
+  background: #e5e5e5;
+  border-radius: 100px 100px 0 0;
+  display: block;
+  height: 300px;
+  margin: 0 35px 10px;
+  padding: 5px;
+  position: relative;
+  width: 30px;
+}
+
+.amount {
+  background: #f34e54;
+  border-radius: 100px;
+  display: block;
+  width: 20px;
+  position: absolute;
+  bottom: -45px;
+	height: 0%;
+}
+
+.bulb {
+  background: #e5e5e5;
+  border-radius: 100px;
+  display: block;
+  height: 60px;
+  margin: 0 35px 10px;
+  padding: 5px;
+  position: relative;
+  top: -20px;
+  right: 15px;
+  width: 60px;
+}
+
+.red-circle {
+  background: #f34e54;
+  border-radius: 100px;
+  display: block;
+  height: 50px;
+  width: 50px;
+}
+
+.filler {
+  background: #f34e54;
+  border-radius: 100px 100px 0 0;
+  display: block;
+  height: 30px;
+  width: 20px;
+  position: relative;
+  top: -65px;
+  right: -15px;
+  z-index: 30;
+}
+
+
+
+/*------------------------*\
+		#MEDIA QUERIES
+\*------------------------*/
+
+@media only screen 
+	and (min-width: 480px)
+	and (max-width: 800px) {
+	
+	nav {
+		height: 60px;
+	}
+		
+	.title {
+		display: inline-block;
+		width: 100%;
+		margin-left: 0;
+		font-size: 4rem;
+		margin-top: 6rem;
+	}
+	
+	.game {
+		width: 80%;
+		margin-left: 1.2rem;
+		margin-top: 7.5rem;
+	}
+		
+	.thermometer {
+		margin-top: 3rem;
+		margin-left: 3.5rem;
+	}
+}
+
+@media only screen 
+	and (min-width: 801px) 
+	and (max-width: 1400px) {
+	
+	nav {
+		height: 60px;
+	}
+		
+	.title {
+		display: inline-block;
+		width: 100%;
+		margin-left: 0;
+		margin-top: 4rem;
+		font-size: 7rem;
+	}
+	
+	.game {
+		width: 80%;
+		margin-left: 1.2rem;
+		margin-top: 7.5rem;
+	}
+		
+	.thermometer {
+		margin-top: 5rem;
+		margin-left: 9rem;
+	}
+		
+	.guessBox {
+		margin-left: 36%;
+	}
+		
+	.guess-title {
+		margin-left: 36%;
+		margin-top: 5rem;
+	}
+}
+
+@media only screen 
+	and (min-width: 801px) 
+	and (max-width: 1400px) {
+	
+	nav {
+		height: 65px;
+	}
+		
+	.new {
+		margin-right: 3rem;
+	}
+		
+	.instr-trigger{
+		margin-left: 80%;
+	}
+		
+	.title {
+		font-size: 7rem;
+		margin-top: 5rem;
+	}
+	
+	.game {
+		width: 70%;
+		margin-left: 6rem;
+		margin-top: 7.5rem;
+	}
+		
+	.thermometer {
+		margin-top: 2rem;
+		margin-left: 12rem;
+		width: 100px;
+	}
+
+	.glass {
+		border-radius: 100px 100px 0 0;
+		height: 500px;
+		width: 60px;
+	}
+
+	.amount {
+		width: 30px;
+		bottom: -50px;
+		height: 0%;
+		margin-left: 10px;
+	}
+
+	.bulb {
+		height: 80px;
+		margin: 0 40px 10px;
+		padding: 10px;
+		top: -35px;
+		right: 15px;
+		width: 80px;
+	}
+
+	.red-circle {
+		height: 60px;
+		width: 60px;
+	}
+
+	.filler {
+		height: 50px;
+		width: 30px;
+		top: -80px;
+		right: -15px;
+	}
+}
+
+@media only screen and (min-width: 1401px) {
+	nav {
+		height: 65px;
+	}
+		
+	.new {
+		margin-right: 5rem;
+	}
+		
+	.instr-trigger{
+		margin-left: 82%;
+	}
+		
+	.title {
+		font-size: 7rem;
+		margin-top: 7rem;
+	}
+	
+	.game {
+		width: 60%;
+		margin-left: 14rem;
+		margin-top: 12rem;
+	}
+	
+	.guess-title {
+		margin-left: 24rem;
+	}
+
+	.guessBox span {
+		font-size: 3rem;
+		padding-left: 10px;
+		margin-top: 20px;
+	}
+	
+	.thermometer {
+		margin-top: 3rem;
+		margin-left: 25rem;
+		width: 100px;
+	}
+
+	.glass {
+		border-radius: 100px 100px 0 0;
+		height: 500px;
+		width: 60px;
+	}
+
+	.amount {
+		width: 30px;
+		bottom: -50px;
+		height: 0%;
+		margin-left: 10px;
+	}
+
+	.bulb {
+		height: 80px;
+		margin: 0 40px 10px;
+		padding: 10px;
+		top: -35px;
+		right: 15px;
+		width: 80px;
+	}
+
+	.red-circle {
+		height: 60px;
+		width: 60px;
+	}
+
+	.filler {
+		height: 50px;
+		width: 30px;
+		top: -80px;
+		right: -15px;
+	}
+} 
