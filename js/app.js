@@ -124,9 +124,9 @@ $(document).ready(function() {
 	});
 	
   /*--- hide information modal box ---*/
-  $("a.close").click(function(){
-    $overlay.fadeOut(1000);
-  });
+//  $("a.close").click(function(){
+//    $overlay.fadeOut(1000);
+//  });
 	
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
@@ -176,7 +176,6 @@ $(document).ready(function() {
     else {
       /*--- error message ---*/
 			$title.addClass("hidden");
-//      $feedback.text("Pick a number 1 through 100");
     }
 
     /*--- void out input field for next guess ---*/

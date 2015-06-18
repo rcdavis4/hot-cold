@@ -369,3 +369,68 @@ h1 {
 		right: -15px;
 	}
 }
+
+@media only screen and (min-width: 1401px) {
+	nav {
+		height: 65px;
+	}
+		
+	.new {
+		margin-right: 5rem;
+	}
+		
+	.instr-trigger{
+		margin-left: 82%;
+	}
+		
+	.title {
+		font-size: 7rem;
+		margin-top: 5rem;
+	}
+	
+	.game {
+		width: 60%;
+		margin-left: 14rem;
+		margin-top: 10rem;
+	}
+		
+	.thermometer {
+		margin-top: 2rem;
+		margin-left: 25rem;
+		width: 100px;
+	}
+
+	.glass {
+		border-radius: 100px 100px 0 0;
+		height: 500px;
+		width: 60px;
+	}
+
+	.amount {
+		width: 30px;
+		bottom: -50px;
+		height: 0%;
+		margin-left: 10px;
+	}
+
+	.bulb {
+		height: 80px;
+		margin: 0 40px 10px;
+		padding: 10px;
+		top: -35px;
+		right: 15px;
+		width: 80px;
+	}
+
+	.red-circle {
+		height: 60px;
+		width: 60px;
+	}
+
+	.filler {
+		height: 50px;
+		width: 30px;
+		top: -80px;
+		right: -15px;
+	}
+} 
