@@ -24,8 +24,7 @@ $(document).ready(function() {
 /*--- FUNCTIONS ---*/
 	/*--- generate random secret number ---*/
   function secretNumber() {
-//    secretNum = Math.floor(Math.random() * 100) + 1;
-		secretNum = 10;
+    secretNum = Math.floor(Math.random() * 100) + 1;
   }
 	
   /*--- disables input field and button after correct guess ---*/
@@ -122,11 +121,6 @@ $(document).ready(function() {
 		in_duration: 300, // Transition in duration
 		out_duration: 200, // Transition out duration
 	});
-	
-  /*--- hide information modal box ---*/
-//  $("a.close").click(function(){
-//    $overlay.fadeOut(1000);
-//  });
 	
   /*--- refresh fields for new game ---*/
   $(".new").click(function() {
