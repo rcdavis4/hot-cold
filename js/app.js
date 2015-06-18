@@ -52,10 +52,10 @@ $(document).ready(function() {
       /*--- test for proximity to secret number ---*/
       if (guess === secretNum) {
         correct = true;
-				$amount.css("height", "110%");
+				$amount.css("height", "108%");
       }
       else if (diff < 10) {
-        $amount.css("height", "110%");
+        $amount.css("height", "108%");
       }
       else if (diff < 20) {
         $amount.css("height", "90%");
